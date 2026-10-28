@@ -1,4 +1,4 @@
-module github.com/tfc11001/ccxt-go/v4
+module github.com/ccxt/ccxt/go/v4
 
 go 1.25.0
 

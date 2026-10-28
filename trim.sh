@@ -53,10 +53,9 @@ trim(here + '/exchange_dynamic.go', keep | {'Exchange'}, 3)
 trim(here + '/exchange_typed_interface.go', keep | {'exchange'}, 2)
 PY
 
-# The module keeps CCXT's dependencies; its own path is this repository's.
-sed "s#^module .*#module github.com/tfc11001/ccxt-go/v4#" "$src/go.mod" > "$here/go.mod"
-sed -i.bak "s#\"github.com/ccxt/ccxt/go/v4/protoc\"#\"github.com/tfc11001/ccxt-go/v4/protoc\"#" "$here"/*.go
-rm -f "$here"/*.bak
+# The module keeps CCXT's own path (github.com/ccxt/ccxt/go/v4) and go.mod, so
+# a consumer reaches it with a replace directive and imports CCXT unchanged.
+cp "$src/go.mod" "$here/go.mod"
 printf '%s\n' "$version" > "$here/UPSTREAM_VERSION"
 printf '%s\n' "${keep[@]}" > "$here/EXCHANGES"
 

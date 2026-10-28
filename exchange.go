@@ -24,7 +24,7 @@ import (
 	starkfelt "github.com/NethermindEth/juno/core/felt"
 	starkcurve "github.com/NethermindEth/starknet.go/curve"
 	starkutils "github.com/NethermindEth/starknet.go/utils"
-	pb "github.com/tfc11001/ccxt-go/v4/protoc"
+	pb "github.com/ccxt/ccxt/go/v4/protoc"
 	"golang.org/x/net/proxy"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"

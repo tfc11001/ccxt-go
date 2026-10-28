@@ -17,10 +17,8 @@ CI job and image build. Trimmed to three exchanges it takes about 1.4 GB.
 2. deletes each exchange not kept (`<id>.go`, `<id>_api.go`, `<id>_wrapper.go`);
 3. removes those exchanges' cases from the two by-name registries
    (`exchange_dynamic.go`, `exchange_typed_interface.go`);
-4. renames the module to `github.com/tfc11001/ccxt-go/v4` and its one
-   internal import (`protoc`) to match.
-
-Nothing else is edited. `UPSTREAM_VERSION` and `EXCHANGES` record what the
+Nothing else is edited, `go.mod` included: the module keeps CCXT's own path,
+`github.com/ccxt/ccxt/go/v4`, as forks used through `replace` do. `UPSTREAM_VERSION` and `EXCHANGES` record what the
 current tree was built from.
 
 ## Using it
@@ -30,7 +28,7 @@ The API is CCXT's, so code imports `github.com/ccxt/ccxt/go/v4` as usual and
 
 ```
 require github.com/ccxt/ccxt/go/v4 v4.5.77
-replace github.com/ccxt/ccxt/go/v4 => github.com/tfc11001/ccxt-go/v4 v4.5.77-tfc.1
+replace github.com/ccxt/ccxt/go/v4 => github.com/tfc11001/ccxt-go/v4 v4.5.77-tfc.2
 ```
 
 ## Adding an exchange or upgrading CCXT
@@ -41,4 +39,4 @@ replace github.com/ccxt/ccxt/go/v4 => github.com/tfc11001/ccxt-go/v4 v4.5.77-tfc
 ```
 
 Commit the result and tag it `<upstream version>-tfc.<n>` (e.g.
-`v4.5.77-tfc.2`), then bump the `replace` line in tfc.
+`v4.5.77-tfc.3`), then bump the `replace` line in tfc.
